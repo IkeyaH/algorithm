@@ -38,6 +38,7 @@
 #   puts 'No'
 # end
 
+# リファクタ
 n, target, lte = gets.chomp.split(' ').map(&:to_i)
 scores = gets.chomp.split(' ').map(&:to_i)
 max = scores.sum

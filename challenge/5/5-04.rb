@@ -1,3 +1,6 @@
+# 以下は不完全な回答
+# retry-2-5-5.4参照
+
 n, target, k = gets.chomp.split(' ').map(&:to_i)
 numbers = gets.chomp.split(' ').map(&:to_i)
 
