@@ -11,18 +11,16 @@ dp[0][0] = 0
 
 for i in 1..s_len do
   for j in 1..t_len do
-    if i > 0 && j > 0
-      if s_arr[i - 1] == t_arr[j - 1]
-        dp[i][j] = [
-          dp[i][j],
-          dp[i - 1][j - 1] + 1
-        ].max
-      else
-        dp[i][j] = [
-          dp[i][j],
-          dp[i - 1][j - 1]
-        ].max
-      end
+    if s_arr[i - 1] == t_arr[j - 1]
+      dp[i][j] = [
+        dp[i][j],
+        dp[i - 1][j - 1] + 1
+      ].max
+    else
+      dp[i][j] = [
+        dp[i][j],
+        dp[i - 1][j - 1]
+      ].max
     end
 
     if i > 0
