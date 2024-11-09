@@ -22,13 +22,17 @@ for i in 1..n do
   end
 end
 
-arr = dp[n]
-result = 0
+# arr = dp[n]
+# result = 0
 
-for i in 0..v_max do
-  if arr[i] < 10**9
-    result = i
-  end
-end
+# for i in 0..v_max do
+#   if arr[i] < 10**9
+#     result = i
+#   end
+# end
+
+# downtoメソッド
+# 呼び出し元の数から引数まで1ずつ減らしながら確認してくれる
+result = v_max.downto(0).find { |v| dp[n][v] != Float::INFINITY }
 
 puts result
