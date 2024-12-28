@@ -1,4 +1,4 @@
-# https://atcoder.jp/contests/abc120/tasks/abc120_d
+# Union-Find
 class UnionFind
   attr_reader :par, :siz
 
@@ -59,23 +59,25 @@ M.times do
   b_arr << b - 1
 end
 
-uf = UnionFind.new(N)
-inconvenience = Array.new(M)
+bridge_count = 0
 
-current_inconvenience = N * (N - 1) / 2 # 5C2の計算
+M.times do |i|
+  uf = UnionFind.new(N)
 
-(M - 1).downto(0) do |i|
-  inconvenience[i] = current_inconvenience
-
-  if !uf.same?(a_arr[i], b_arr[i])
-    size_x = uf.size(a_arr[i])
-    size_y = uf.size(b_arr[i])
-
-    uf.unite(a_arr[i], b_arr[i])
-    current_inconvenience = current_inconvenience - size_y * size_x
+  M.times do |j|
+    # 自身の辺以外でグループ化
+    next if i == j
+    uf.unite(a_arr[j], b_arr[j])
   end
+
+  is_bridge = false
+
+  N.times do |n|
+    next if n == 0
+    is_bridge = true if !uf.same?(0, n)
+    break if is_bridge == true
+  end
+  bridge_count += 1 if is_bridge == true
 end
 
-inconvenience.each do |i|
-  puts i
-end
+puts bridge_count
